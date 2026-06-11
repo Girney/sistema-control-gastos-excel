@@ -1,0 +1,36 @@
+# Archivos de Excel
+*.xlsx
+*.xls
+*.xlsm
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Carpetas generadas
+C:\informe\
+C:\informe\Reportes\
+
+# Archivos temporales
+*.tmp
+*.bak
+~$*
+
+# Archivos de node (si se usa con node-ms-office)
+node_modules/
+package-lock.json
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Reportes generados
+Reportes/*.xlsx
+Reportes/*.pdf
