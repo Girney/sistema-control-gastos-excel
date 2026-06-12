@@ -1,265 +1,399 @@
-# 📊 Sistema de Control de Gastos - Excel VBA
+# 💼 Sistema de Control de Gastos en Excel
 
-Sistema profesional de control de gastos para Microsoft Excel utilizando VBA y UserForms. Permite registrar, consultar, editar, eliminar y reportar gastos mediante Facturas y Notas de Venta.
+**Aplicación profesional para administrar facturas y notas de venta mediante VBA y UserForms**
 
-## 🎯 Características
+[![Excel](https://img.shields.io/badge/Excel-2016+-green.svg)](https://www.microsoft.com/excel)
+[![VBA](https://img.shields.io/badge/VBA-Macro%20Enabled-blue.svg)](https://docs.microsoft.com/vba/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-### ✅ Gestión de Documentos
-- **Facturas**: Códigos automáticos (Fac0001, Fac0002, etc.)
-- **Notas de Venta**: Códigos automáticos (NV0001, NV0002, etc.)
-- Formularios dinámicos según tipo de documento
-- CRUD completo (Crear, Leer, Editar, Eliminar)
-- Búsqueda inteligente
+---
 
-### 📊 Reportería Avanzada
-- Reportes filtrados por: tipo documento, proveedor, tipo gasto, fecha
-- Búsqueda inteligente con autocompletado
-- Exportación a Excel
-- Exportación a PDF
+## 📋 Características
 
-### 📈 Dashboard Dinámico
-- Indicadores en tiempo real
-- Gráficos de gastos por categoría
-- Análisis por proveedor
-- Top 10 proveedores
+✅ **Gestión de Documentos**
+- Registro de Facturas (Fac0001, Fac0002, ...)
+- Registro de Notas de Venta (NV0001, NV0002, ...)
+- CRUD completo (Crear, Leer, Actualizar, Eliminar)
 
-### 🔍 Búsqueda Inteligente
-- ComboBox con filtrado automático
-- Búsqueda sin distinción de mayúsculas/minúsculas
-- Coincidencias parciales
-- Creación de nuevos tipos de gasto
+✅ **Búsqueda Inteligente**
+- Búsqueda por múltiples campos
+- ComboBox con autocompletado
+- Filtrado dinámico en tiempo real
 
-## 📋 Requisitos
+✅ **Reportes Avanzados**
+- Reporte de Facturas con totales
+- Reporte de Notas de Venta
+- Reporte General consolidado
+- Agrupación por proveedor, tipo de gasto, forma de pago
 
-- Microsoft Excel 2016, 2019, 2021 o Microsoft 365
-- VBA habilitado
-- Macros habilitadas
-- Windows 10/11
+✅ **Exportación**
+- Exportar a Excel (.xlsx)
+- Exportar a PDF con formato profesional
+- Nombres automáticos con timestamp
+
+✅ **Dashboard Dinámico**
+- 12+ indicadores clave
+- Gráficos actualizables automáticamente
+- Análisis por proveedor, tipo de gasto y forma de pago
+
+✅ **Validaciones Completas**
+- Validación de campos obligatorios
+- Prevención de duplicados
+- Validación de fechas y montos
+- Mensajes de error amigables
+
+---
 
 ## 🚀 Instalación Rápida
 
-### Paso 1: Descargar Archivos
+### Paso 1: Descargar
 ```bash
 git clone https://github.com/Girney/sistema-control-gastos-excel.git
+cd sistema-control-gastos-excel
 ```
 
-### Paso 2: Abrir Excel
-1. Navega a la carpeta `/Template`
-2. Abre `informe_factura.xlsm`
-3. Habilita macros cuando se solicite
+### Paso 2: Abrir en Excel
+1. Abre `informe_factura.xlsm` en Microsoft Excel
+2. Habilita las macros cuando se solicite
+3. El sistema verificará y creará automáticamente:
+   - Carpeta `C:\informe\`
+   - Hojas de trabajo necesarias
+   - Base de datos interna
 
-### Paso 3: Inicialización Automática
-El sistema creará automáticamente:
-- Carpeta: `C:\informe\`
-- Archivo: `C:\informe\informe_factura.xlsx`
-- Hojas: Registros, TiposGasto, Reportes, Dashboard
+### Paso 3: Comenzar
+1. Presiona `Ctrl + Shift + I` o ejecuta la macro `IniciarAplicacion`
+2. Se abrirá el formulario principal
+3. ¡Comienza a registrar gastos!
+
+---
 
 ## 📁 Estructura del Proyecto
 
 ```
 sistema-control-gastos-excel/
-├── README.md
-├── INSTALACION.md
+├── README.md                          # Este archivo
+├── GUIA_USO.md                       # Manual completo de usuario
+├── informe_factura.xlsm              # Archivo Excel principal
+│
 ├── VBA/
-│   ├── Modulos/
-│   │   ├── ModuloInitDB.bas         # Inicialización de BD
-│   │   ├── ModuloCRUD.bas           # Operaciones CRUD
-│   │   ├── ModuloReportes.bas       # Generación de reportes
-│   │   ├── ModuloExportacion.bas    # Export Excel/PDF
-│   │   ├── ModuloUtilidades.bas     # Funciones auxiliares
-│   │   └── ModuloDashboard.bas      # Actualización dashboard
-│   ├── Clases/
-│   │   ├── ClaseDocumento.cls       # Clase documento
-│   │   ├── ClaseGasto.cls           # Clase tipo gasto
-│   │   └── ClaseReporte.cls         # Clase reporte
-│   └── Formularios/
-│       ├── FormularioPrincipal.frm  # Formulario principal
-│       ├── FormularioReportes.frm   # Formulario reportes
-│       └── FormularioBusqueda.frm   # Formulario búsqueda
-├── Template/
-│   └── informe_factura.xlsm
-└── Documentacion/
-    ├── GUIA_USUARIO.md
-    ├── GUIA_DESARROLLADOR.md
-    └── CAMBIOS.md
+│   ├── ModMain.bas                   # Inicialización y menú principal
+│   ├── ModDatabase.bas               # CRUD y gestión de datos
+│   ├── ModValidation.bas             # Validaciones
+│   ├── ModSearch.bas                 # Búsqueda y filtrado
+│   ├── ModReports.bas                # Generación de reportes
+│   ├── ModDashboard.bas              # Dashboard y gráficos
+│   ├── ModExport.bas                 # Exportación Excel/PDF
+│   ├── ModAutoComplete.bas           # ComboBox inteligente
+│   └── ModUtils.bas                  # Funciones auxiliares
+│
+└── Formularios/
+    ├── FrmMain.frm                   # Formulario principal
+    ├── FrmReports.frm                # Formulario de reportes
+    ├── FrmSearch.frm                 # Búsqueda avanzada
+    └── FrmAddGasto.frm               # Agregar tipo de gasto
 ```
-
-## 🎮 Uso Básico
-
-### Iniciar el Sistema
-1. Abrir Excel
-2. Presionar `Ctrl + Alt + F` o usar menú desplegable
-3. El formulario principal se abrirá automáticamente
-
-### Registrar Factura
-1. Seleccionar "Factura"
-2. Completar campos (el código se genera automáticamente)
-3. Hacer clic en "Guardar"
-
-### Registrar Nota de Venta
-1. Seleccionar "Nota de Venta"
-2. Completar campos (el código se genera automáticamente)
-3. Hacer clic en "Guardar"
-
-### Ver Reportes
-1. Hacer clic en botón "Reportes"
-2. Aplicar filtros deseados
-3. Exportar a Excel o PDF
-
-## 🔐 Validaciones
-
-El sistema valida automáticamente:
-- ✅ Campos obligatorios no vacíos
-- ✅ Números de factura únicos
-- ✅ Números de Nota de Venta únicos
-- ✅ Sin valores negativos
-- ✅ Fechas válidas
-- ✅ Importes numéricos correctos
-- ✅ Total no puede ser cero
-
-## 📋 Campos - Factura
-
-- Código interno (automático: Fac0001, Fac0002, etc.)
-- Fecha de emisión
-- Proveedor
-- Tipo de identificación (Cédula/RUC)
-- Número de factura
-- Tipo de gasto
-- Subtotal
-- IVA
-- Total
-- Forma de pago
-- Observaciones
-
-## 📋 Campos - Nota de Venta
-
-- Código interno (automático: NV0001, NV0002, etc.)
-- Fecha de emisión
-- Proveedor
-- Número de Nota de Venta
-- Nombre de Proveedor
-- Tipo de gasto
-- Total
-- Forma de pago
-- Observaciones
-
-## 💳 Formas de Pago
-
-- Efectivo
-- Transferencia
-- Tarjeta de Crédito
-- Tarjeta de Débito
-- Cheque
-- Otro
-
-## 📊 Tipos de Gasto Iniciales
-
-Alimentación | Transporte | Hospedaje | Materiales de oficina
-Servicios básicos | Combustible | Mantenimiento | Equipos tecnológicos
-Capacitación | Papelería | Internet | Telefonía
-Software | Hardware | Publicidad | Impresiones
-Repuestos | Herramientas | Seguridad | Otros
-
-## 📈 Dashboard - Indicadores
-
-### Métricas
-- Total de documentos registrados
-- Total de Facturas
-- Total de Notas de Venta
-- Total de gastos
-- Total por proveedor
-- Total por tipo de gasto
-
-### Gráficos
-1. **Gastos por Proveedor** - Gráfico de barras
-2. **Gastos por Tipo de Gasto** - Gráfico circular
-3. **Gastos por Mes** - Gráfico de líneas
-4. **Facturas vs Notas de Venta** - Gráfico comparativo
-5. **Top 10 Proveedores** - Ranking
-
-## 🔄 Ciclo de Vida del Documento
-
-```
-┌─────────────┐
-│   NUEVO     │  Crear nuevo registro
-└──────┬──────┘
-       │
-       ▼
-┌─────────────┐
-│  EDITAR     │  Modificar datos
-└──────┬──────┘
-       │
-       ▼
-┌─────────────┐
-│  GUARDAR    │  Validar y almacenar
-└──────┬──────┘
-       │
-       ▼
-┌─────────────┐
-│  REGISTRADO │  En base de datos
-└──────┬──────┘
-       │
-       ▼ (Opcional)
-┌─────────────┐
-│  ELIMINAR   │  Remover registro
-└─────────────┘
-```
-
-## 📁 Carpetas Automáticas
-
-El sistema crea automáticamente:
-
-```
-C:\informe\
-├── informe_factura.xlsx      (Base de datos)
-└── Reportes\                 (Exportaciones)
-    ├── Excel_YYYYMMDD_HHmmss.xlsx
-    └── PDF_YYYYMMDD_HHmmss.pdf
-```
-
-## 🛠️ Instalación Manual desde Código
-
-Si prefieres instalar módulo por módulo:
-
-1. Crear nuevo libro Excel (`.xlsm`)
-2. Abrir Editor VBA (`Alt + F11`)
-3. Importar archivos:
-   - `/VBA/Modulos/*.bas`
-   - `/VBA/Clases/*.cls`
-   - `/VBA/Formularios/*.frm`
-4. Ejecutar: `ModuloInitDB.InicializarSistema()`
-
-## 🐛 Solución de Problemas
-
-### Macros no se ejecutan
-- Verificar que Excel esté en modo de "Contenido habilitado"
-- Guardar como `.xlsm` (no `.xlsx`)
-
-### Carpeta C:\informe no se crea
-- Verificar permisos de escritura en C:\
-- Ejecutar Excel como administrador
-
-### Errores de validación
-- Revisar que los campos obligatorios estén completados
-- Verificar formato de fechas (DD/MM/YYYY)
-- Asegurar valores numéricos positivos
-
-## 📞 Soporte
-
-Para reportar errores o sugerir mejoras:
-- [Abrir Issue](https://github.com/Girney/sistema-control-gastos-excel/issues)
-- Describir el problema detalladamente
-- Adjuntar screenshot si es posible
-
-## 📄 Licencia
-
-Este proyecto está disponible bajo licencia MIT.
-
-## 👨‍💻 Autor
-
-Girney
 
 ---
 
-**Última actualización**: Junio 2026
-**Versión**: 1.0.0
+## 🎯 Guía de Uso Rápida
+
+### Registrar una Factura
+1. Abre el formulario principal (`Ctrl + Shift + I`)
+2. Selecciona "Factura"
+3. Completa los campos:
+   - Fecha de emisión
+   - RUC del proveedor
+   - Nombre del proveedor
+   - Número de factura
+   - Tipo de gasto (con búsqueda inteligente)
+   - Subtotal (IVA se calcula automáticamente)
+   - Forma de pago
+4. Clic en "Guardar"
+
+### Registrar una Nota de Venta
+1. Abre el formulario principal
+2. Selecciona "Nota de Venta"
+3. Completa los campos:
+   - Fecha de emisión
+   - Número de nota de venta
+   - Proveedor
+   - Emitido con (Cédula/RUC)
+   - Tipo de gasto
+   - Total
+   - Forma de pago
+4. Clic en "Guardar"
+
+### Buscar Registros
+1. Haz clic en "Buscar"
+2. Ingresa criterios (puedes combinar múltiples filtros)
+3. Los resultados aparecen en una tabla
+4. Haz doble clic para editar
+
+### Generar Reportes
+1. Clic en "Reportes"
+2. Selecciona el tipo:
+   - Facturas
+   - Notas de Venta
+   - General
+3. Aplica filtros si deseas
+4. Exporta a Excel o PDF
+
+### Ver Dashboard
+1. Clic en "Dashboard"
+2. Se actualizará automáticamente con los datos
+3. Visualiza indicadores clave y gráficos
+
+---
+
+## ⚙️ Requisitos del Sistema
+
+| Requisito | Versión |
+|-----------|----------|
+| **Excel** | 2016, 2019, 2021, Microsoft 365 |
+| **VBA** | 7.1+ (incluido en Excel) |
+| **Windows** | 7, 8, 10, 11 |
+| **Espacio en disco** | ~5 MB |
+| **Carpeta destino** | `C:\informe\` (se crea automáticamente) |
+
+### Habilitar Macros
+1. Abre Excel
+2. Archivo → Opciones → Centro de confianza
+3. Haz clic en "Configuración del Centro de confianza"
+4. Macros de VBA → Selecciona "Habilitar todas las macros"
+
+---
+
+## 📊 Campos de Base de Datos
+
+### Hojas del Libro
+- **Registros**: Almacena todos los documentos (Facturas y Notas de Venta)
+- **TiposGasto**: Lista de categorías de gastos (editable)
+- **Reportes**: Generación automática de reportes
+- **Dashboard**: Indicadores y gráficos en tiempo real
+
+### Estructura de Registros
+
+| Campo | Factura | Nota Venta |
+|-------|---------|----------|
+| Código | ✅ Obligatorio | ✅ Obligatorio |
+| Tipo Documento | ✅ | ✅ |
+| Fecha Emisión | ✅ Obligatorio | ✅ Obligatorio |
+| RUC Proveedor | ✅ Obligatorio | ❌ Vacío |
+| Número Factura | ✅ Obligatorio | ❌ Vacío |
+| Número Nota Venta | ❌ Vacío | ✅ Obligatorio |
+| Proveedor | ✅ Obligatorio | ✅ Obligatorio |
+| Emitido con | ❌ Vacío | ✅ Obligatorio |
+| Tipo Gasto | ✅ Obligatorio | ✅ Obligatorio |
+| Subtotal | ✅ Obligatorio | ❌ Vacío |
+| IVA | ✅ Obligatorio | ❌ Vacío |
+| Total | ✅ Obligatorio | ✅ Obligatorio |
+| Forma Pago | ✅ Obligatorio | ✅ Obligatorio |
+| Observaciones | ❌ Opcional | ❌ Opcional |
+
+---
+
+## 🔍 Búsqueda Inteligente
+
+El sistema permite buscar por:
+- Código (Fac0001, NV0001, etc.)
+- Tipo de documento (Factura, Nota Venta)
+- Fecha (rango o exacta)
+- RUC del proveedor
+- Número de factura
+- Número de nota de venta
+- Nombre del proveedor
+- Tipo de gasto
+- Forma de pago
+
+Puedes **combinar múltiples filtros simultáneamente**.
+
+---
+
+## 💾 Exportación de Reportes
+
+### A Excel
+```
+C:\informe\Reportes\Reporte_20260612_1430.xlsx
+```
+
+### A PDF
+```
+C:\informe\Reportes\Reporte_20260612_1430.pdf
+```
+
+El PDF incluye:
+- Nombre del reporte
+- Fecha de generación
+- Filtros aplicados
+- Tabla completa
+- Totales y resumen
+
+---
+
+## 📈 Dashboard - Indicadores
+
+**Totales:**
+- Total de documentos
+- Total Facturas
+- Total Notas de Venta
+- Total Gastos
+
+**Análisis:**
+- Promedio por documento
+- Total por proveedor
+- Total por tipo de gasto
+- Total por forma de pago
+- Gasto del mes actual
+- Gasto anual
+
+**Gráficos:**
+- Gastos por proveedor
+- Gastos por tipo de gasto
+- Gastos por mes
+- Comparativo Facturas vs Notas de Venta
+- Top 10 proveedores
+- Formas de pago
+- Evolución mensual
+
+---
+
+## ✅ Validaciones Integradas
+
+El sistema **impide automáticamente:**
+- ❌ Guardar registros incompletos
+- ❌ Números de factura duplicados
+- ❌ Números de nota venta duplicados
+- ❌ Totales negativos
+- ❌ Fechas inválidas o futuras
+- ❌ Campos obligatorios vacíos
+- ❌ IVA negativo
+
+---
+
+## 🎨 Interfaz de Usuario
+
+- ✨ Diseño moderno y profesional
+- 🎯 UserForms centrados y responsivos
+- 🔘 Botones con iconos intuitivos
+- 🌈 Esquema de colores profesional
+- ⌨️ Navegación con teclado (Tab, Enter, Escape)
+- 📱 Compatible con Excel 2016+
+- 🖱️ ListView para visualización de datos
+
+---
+
+## 🔐 Seguridad y Validaciones
+
+✅ **Integridad de datos:**
+- Validación automática de campos obligatorios
+- Prevención de duplicados
+- Validación de rangos numéricos
+- Validación de formatos de fecha
+
+✅ **Registro y auditoría:**
+- Todos los cambios se almacenan en la hoja Registros
+- Cada operación genera un código único
+- Historial completo de transacciones
+
+---
+
+## 📝 Tipos de Gasto Predefinidos
+
+El sistema incluye categorías comunes:
+- Servicios Generales
+- Mantenimiento Equipos
+- Mantenimiento Vehicular
+- Utiles de Oficina
+- Combustible
+- Arrendamiento
+- Seguros
+- Servicios Profesionales
+- Publicidad
+- Viáticos
+
+**Puedes agregar nuevas categorías dinámicamente** desde los formularios.
+
+---
+
+## 🚨 Solución de Problemas
+
+### Las macros no se ejecutan
+1. ✅ Habilita las macros en Centro de confianza de Excel
+2. ✅ Guarda el archivo como `.xlsm` (macro habilitado)
+
+### Las carpetas no se crean
+1. ✅ Verifica que tengas permisos de escritura en `C:\`
+2. ✅ Ejecuta Excel como administrador
+
+### Los gráficos no aparecen en Dashboard
+1. ✅ Abre el archivo en Excel y selecciona la hoja Dashboard
+2. ✅ Hace clic en los gráficos para refrescar
+
+### Error "División por cero" en reportes
+1. ✅ Asegúrate de tener al menos un registro antes de generar reportes
+2. ✅ Los reportes vacíos muestran 0 automáticamente
+
+---
+
+## 📞 Soporte y Contribuciones
+
+### Reportar Issues
+1. Abre una [issue en GitHub](https://github.com/Girney/sistema-control-gastos-excel/issues)
+2. Describe el problema con detalle
+3. Incluye versión de Excel y Windows
+
+### Contribuir
+```bash
+# Fork el proyecto
+# Crea una rama (git checkout -b feature/mejora)
+# Commit cambios (git commit -m 'Agrega mejora')
+# Push (git push origin feature/mejora)
+# Abre Pull Request
+```
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia MIT. Ver archivo [LICENSE](LICENSE) para detalles.
+
+---
+
+## 🎓 Documentación Completa
+
+Para una guía detallada paso a paso, consulta: **[GUIA_USO.md](GUIA_USO.md)**
+
+---
+
+## 👨‍💻 Autor
+
+**Desarrollado como solución profesional de gestión empresarial**
+
+---
+
+## 🔄 Changelog
+
+### v1.0.0 (2026-06-12)
+- ✨ Release inicial
+- ✅ CRUD completo de Facturas y Notas de Venta
+- ✅ Búsqueda inteligente con filtros
+- ✅ Reportes con agrupación
+- ✅ Dashboard con 12+ indicadores
+- ✅ Exportación a Excel y PDF
+- ✅ ComboBox con autocompletado
+- ✅ Validaciones completas
+
+---
+
+## 💡 Tips y Trucos
+
+1. **Atajo de teclado principal**: `Ctrl + Shift + I` abre el formulario
+2. **Búsqueda rápida**: Usa Enter para buscar automáticamente
+3. **Editar registros**: Doble clic en resultado de búsqueda
+4. **Tipos de gasto**: Se agregan automáticamente cuando escribes uno nuevo
+5. **Reportes mensuales**: Filtra por mes en la sección de fechas
+6. **Exportar todo**: Selecciona "Todos" en reportes para consolidado
+
+---
+
+**¡Gracias por usar Sistema de Control de Gastos! 💼✨**
